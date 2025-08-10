@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ChatGPT suggested these
+# Python cache
+__pycache__/
+*.pyc
+
+# SQLite database (optional if you want to keep results private)
+*.sqlite
+
+# macOS / Windows junk
+.DS_Store
+Thumbs.db

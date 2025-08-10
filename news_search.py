@@ -8,8 +8,6 @@ load_dotenv()
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
-print(f"GOOGLE_API_KEY: {GOOGLE_API_KEY}")
-print(f"GOOGLE_CSE_ID: {GOOGLE_CSE_ID}")
 
 SEARCH_TERMS = ["Adobe"]
 DATE_RESTRICTION = "d1" #restricts results to last 24 hours
@@ -29,7 +27,7 @@ def run_search(query):
             "dateRestrict": DATE_RESTRICTION
         }
         r = requests.get(url, params=params)
-        r.raise_for_status()
+        r.raise_for_status() #use try-except logic to handle errors here rather than main?
         data = r.json()
         items = data.get("items", [])
         if not items:
@@ -48,7 +46,7 @@ def main():
             #all_new_results[query] = {}
 
     if all_new_results:
-        print(all_new_results)
+        print(json.dumps(all_new_results, indent = 4))
     else:
         print("No new results found.")
 

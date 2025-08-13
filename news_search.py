@@ -15,7 +15,10 @@ SEARCH_TERMS = [
     "adobe -\"Adobe Style\"", 
     "adobe -\"Adobe-style\"", 
     "adobe -\"Adobe-Style\"", 
-    "adobe -\"Adobe home\""
+    "adobe -\"Adobe home\"",
+    "adobe -\"Adobe house\"",
+    "adobe -\"adobe home\"",
+    "adobe -\"adobe house\"",
     ]
 DATE_RESTRICTION = "d1" #restricts results to last 24 hours
 MAX_RESULTS = 100 #100 results per query is max for free tier of API
@@ -32,7 +35,8 @@ def run_search(query):
             "q": query,
             "start": start_index,
             "sort": "date",
-            "dateRestrict": DATE_RESTRICTION
+            "dateRestrict": DATE_RESTRICTION,
+            "tbm": "nws"
         }
         r = requests.get(url, params=params)
         r.raise_for_status() #use try-except logic to handle errors here rather than main?

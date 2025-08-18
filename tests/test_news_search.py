@@ -3,6 +3,12 @@ import requests
 from requests.exceptions import HTTPError
 import news_search
 
+@pytest.fixture(autouse = True)
+def fake_env(monkeypatch):
+    #ensures tests always use fake API credentials
+    monkeypatch.setattr(news_search, "GOOGLE_API_KEY", "fake_api_key")
+    monkeypatch.setattr(news_search, "GOOGLE_CSE_ID", "fake_cse_id")
+
 def test_run_search_multiple_pages(requests_mock):
     #mock multi-page API response; pg 1 has results, pg 2 empty
     query = "test_query"

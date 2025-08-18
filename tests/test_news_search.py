@@ -1,7 +1,7 @@
 import pytest
 import requests
 from requests.exceptions import HTTPError
-import news_search
+from src import news_search
 
 @pytest.fixture(autouse = True)
 def fake_env(monkeypatch):

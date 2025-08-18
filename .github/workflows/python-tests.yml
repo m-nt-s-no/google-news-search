@@ -45,7 +45,7 @@ jobs:
     - name: Run pytest with HTML report
       run: |
         mkdir -p test-results
-        pytest --maxfail=1 --disable-warnings --html=test-results/report.html --self-contained-html
+        PYTHONPATH=src pytest --maxfail=1 --disable-warnings --html=test-results/report.html --self-contained-html
 
     - name: Upload test report artifact
       uses: actions/upload-artifact@v4

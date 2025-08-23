@@ -31,8 +31,7 @@ def send_email(content):
     msg = MIMEMultipart()
     msg['From'] = EMAIL_SENDER
     msg['To'] = EMAIL_RECIPIENT
-    msg['Subject'] = f"Google News Search Results - \
-        {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    msg['Subject'] = f"Google News Search Results - {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
     msg.attach(MIMEText(content, 'html'))
 
     smtpObj = smtplib.SMTP('smtp.gmail.com', 587)

@@ -1,9 +1,9 @@
 import requests
 from requests.exceptions import HTTPError
 import json
-import datetime
 import os
 from dotenv import load_dotenv
+from email_functions import format_email_body, send_email
 
 load_dotenv()
 
@@ -36,10 +36,9 @@ def run_search(query):
             "start": start_index,
             "sort": "date",
             "dateRestrict": DATE_RESTRICTION,
-            "tbm": "nws"
         }
         r = requests.get(url, params=params)
-        r.raise_for_status() #use try-except logic to handle errors here rather than main?
+        r.raise_for_status()
         data = r.json()
         items = data.get("items", [])
         if not items:
@@ -62,11 +61,11 @@ def main():
             print(f"Error with query '{query}': {e}")
 
     if all_new_results:
-        print(json.dumps(all_new_results, indent = 4))
+        print(json.dumps(all_new_results, indent = 2))
         print(f"Found {sum(len(items) for items in all_new_results.values())} new results.")
+        send_email(format_email_body(all_new_results))
     else:
         print("No new results found.")
 
 if __name__ == "__main__":
-    print("running!")
     main()

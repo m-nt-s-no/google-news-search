@@ -1,4 +1,5 @@
 import os
+import datetime
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -12,27 +13,31 @@ EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
 
 def format_email_body(results):
     content = "<html>\n<body>"
-    for query, items in results.items():
-        if not items:
+    for query in results:
+        hits = results[query]
+        if not hits:
             continue
         content += f"\n<h2>Results for query '{query}':</h2>\n<ul>" + "\n".join(
-                f"<li>{item['displayLink']}:<a href='{item['link']}'>{item['title']}</a>\n<p><em>{item['snippet']}</em></p></li>" for item in items
-            )
-    content += "\n</ul>\n</body>\n</html>"
-    if content == "<html>\n<body>\n</ul>\n</body>\n</html>":
+            f"<li>{hit['displayLink']}:<a href='{hit['link']}'>{hit['title']}</a> \
+            \n<p><em>{hit['snippet']}</em></p></li>" for hit in hits
+        )
+        content += "\n</ul>\n"
+    content += "</body>\n</html>"
+    if content == "<html>\n<body></body>\n</html>":
         return "No new results found."
     return content 
 
 def send_email(content):
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL_SENDER
+    msg['To'] = EMAIL_RECIPIENT
+    msg['Subject'] = f"Google News Search Results - \
+        {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    msg.attach(MIMEText(content, 'html'))
+
     smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
     smtpObj.ehlo()
     smtpObj.starttls()
     smtpObj.login(EMAIL_SENDER, EMAIL_PASSWORD)
-    smtpObj.sendmail(EMAIL_SENDER, EMAIL_RECIPIENT, content)
+    smtpObj.sendmail(EMAIL_SENDER, EMAIL_RECIPIENT, msg.as_string())
     smtpObj.quit()
-
-"""
-TO-DO: 
-Where do I add MIME module?
-TEST both functions
-"""

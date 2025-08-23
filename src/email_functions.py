@@ -34,9 +34,8 @@ def send_email(content):
     msg['Subject'] = f"Google News Search Results - {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
     msg.attach(MIMEText(content, 'html'))
 
-    smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
-    smtpObj.ehlo()
-    smtpObj.starttls()
-    smtpObj.login(EMAIL_SENDER, EMAIL_PASSWORD)
-    smtpObj.sendmail(EMAIL_SENDER, EMAIL_RECIPIENT, msg.as_string())
-    smtpObj.quit()
+    with smtplib.SMTP('smtp.gmail.com', 587) as smtpObj:
+        smtpObj.ehlo()
+        smtpObj.starttls()
+        smtpObj.login(EMAIL_SENDER, EMAIL_PASSWORD)
+        smtpObj.sendmail(EMAIL_SENDER, EMAIL_RECIPIENT, msg.as_string())

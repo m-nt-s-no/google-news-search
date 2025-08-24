@@ -9,6 +9,19 @@ def fake_env(monkeypatch):
     monkeypatch.setattr(email_functions, "EMAIL_PASSWORD", "fake_email_password")
     monkeypatch.setattr(email_functions, "EMAIL_RECIPIENT", "fake_email_recipient")
 
+    # Patch smtplib.SMTP to return a mock instance
+    mock_smtp = mocker.patch("src.email_functions.smtplib.SMTP")
+    smtp_instance = mock_smtp.return_value
+
+    # Explicitly set return values for clarity
+    smtp_instance.starttls.return_value = None
+    smtp_instance.login.return_value = None
+    smtp_instance.sendmail.return_value = None
+    smtp_instance.quit.return_value = None
+
+    #yield fake SMTP for tests to access
+    yield smtp_instance
+
 def test_format_email_body_no_results(mocker: MockerFixture):
     content = email_functions.format_email_body({"query": []})
     assert "No new results found." in content
@@ -20,16 +33,12 @@ def test_format_email_body_one_result(mocker: MockerFixture):
     assert all([item in content for item in fake_results.values()])
 
 def test_send_email_no_results(mocker: MockerFixture):
-    #Mock SMTP library to avoid sending real emails
-    mock_smtp = mocker.patch("src.email_functions.smtplib.SMTP")
-    mock_smtp.return_value.sendmail.return_value = None
-
     #Call the function with no-results string
     email_functions.send_email("No new results found.")
 
     #Assert that send_email returns correct parameters
-    assert mock_smtp.return_value.sendmail.called
-    from_addr, to_addr, msg_str = mock_smtp.return_value.sendmail.call_args[0]
+    fake_env.sendmail.assert_called_once()
+    from_addr, to_addr, msg_str = fake_env.sendmail.call_args[0]
 
     assert from_addr == "fake_email_sender"
     assert to_addr == "fake_email_recipient"
@@ -37,10 +46,6 @@ def test_send_email_no_results(mocker: MockerFixture):
     assert "Subject: Google News Search Results" in msg_str
 
 def test_send_email_with_results(mocker: MockerFixture):
-    #mock SMTP so no real emails are sent
-    mock_smtp = mocker.patch("src.email_functions.smtplib.SMTP")
-    mock_smtp.return_value.sendmail.return_value = None
-
     #set up fake_results dict
     fake_results = {"title": "result1", "link": "http://example.com/1", \
                     "displayLink": "http://example.com", "snippet": "Snippet 1"}
@@ -50,10 +55,10 @@ def test_send_email_with_results(mocker: MockerFixture):
     email_functions.send_email(content)
 
     #capture the actual string sent in email and assert email contents are correct
-    from_addr, to_addr, msg_str = mock_smtp.return_value.sendmail.call_args[0]
+    fake_env.sendmail.assert_called_once()
+    from_addr, to_addr, msg_str = fake_env.sendmail.call_args[0]
     assert from_addr == "fake_email_sender"
     assert to_addr == "fake_email_recipient"
-
     assert "result1" in msg_str
     assert "http://example.com/1" in msg_str
     assert "http://example.com" in msg_str

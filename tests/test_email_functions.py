@@ -28,6 +28,7 @@ def test_send_email_no_results(mocker: MockerFixture):
     email_functions.send_email("No new results found.")
 
     #Assert that send_email returns correct parameters
+    assert mock_smtp.return_value.sendmail.called
     from_addr, to_addr, msg_str = mock_smtp.return_value.sendmail.call_args[0]
 
     assert from_addr == "fake_email_sender"

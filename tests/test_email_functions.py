@@ -3,7 +3,7 @@ from pytest_mock import MockerFixture
 from src import email_functions
 
 @pytest.fixture(autouse = True)
-def fake_env(monkeypatch):
+def fake_env(monkeypatch, mocker: MockerFixture):
     #ensures tests use fake email credentials
     monkeypatch.setattr(email_functions, "EMAIL_SENDER", "fake_email_sender")
     monkeypatch.setattr(email_functions, "EMAIL_PASSWORD", "fake_email_password")

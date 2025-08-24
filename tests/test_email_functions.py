@@ -13,6 +13,9 @@ def fake_env(monkeypatch, mocker: MockerFixture):
     mock_smtp = mocker.patch("src.email_functions.smtplib.SMTP")
     smtp_instance = mock_smtp.return_value
 
+    #Force context manager in send_email function to return the same instance
+    smtp_instance.__enter__.return_value = smtp_instance
+
     #Explicitly set return values for clarity
     smtp_instance.starttls.return_value = None
     smtp_instance.login.return_value = None

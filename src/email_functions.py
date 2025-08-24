@@ -7,10 +7,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-EMAIL_SENDER = os.getenv("EMAIL_SENDER")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
-
 def format_email_body(results):
     content = "<html>\n<body>"
     for query in results:
@@ -28,6 +24,12 @@ def format_email_body(results):
     return content 
 
 def send_email(content):
+
+    #Load env vars at call time (with fallbacks for testing/CI)
+    EMAIL_SENDER = os.getenv("EMAIL_SENDER", "fake_email_sender")
+    EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "fake_email_password")
+    EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT", "fake_email_recipient")
+    
     msg = MIMEMultipart()
     msg['From'] = EMAIL_SENDER
     msg['To'] = EMAIL_RECIPIENT

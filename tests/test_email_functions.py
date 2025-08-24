@@ -5,9 +5,9 @@ from src import email_functions
 @pytest.fixture(autouse = True)
 def fake_env(monkeypatch, mocker: MockerFixture):
     #ensures tests use fake email credentials
-    monkeypatch.setattr(email_functions, "EMAIL_SENDER", "fake_email_sender")
-    monkeypatch.setattr(email_functions, "EMAIL_PASSWORD", "fake_email_password")
-    monkeypatch.setattr(email_functions, "EMAIL_RECIPIENT", "fake_email_recipient")
+    monkeypatch.setenv("EMAIL_SENDER", "fake_email_sender")
+    monkeypatch.setenv("EMAIL_PASSWORD", "fake_email_password")
+    monkeypatch.setenv("EMAIL_RECIPIENT", "fake_email_recipient")
 
     #Patch smtplib.SMTP to return a mock instance
     mock_smtp = mocker.patch("src.email_functions.smtplib.SMTP")

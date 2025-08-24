@@ -9,11 +9,11 @@ def fake_env(monkeypatch, mocker: MockerFixture):
     monkeypatch.setattr(email_functions, "EMAIL_PASSWORD", "fake_email_password")
     monkeypatch.setattr(email_functions, "EMAIL_RECIPIENT", "fake_email_recipient")
 
-    # Patch smtplib.SMTP to return a mock instance
+    #Patch smtplib.SMTP to return a mock instance
     mock_smtp = mocker.patch("src.email_functions.smtplib.SMTP")
     smtp_instance = mock_smtp.return_value
 
-    # Explicitly set return values for clarity
+    #Explicitly set return values for clarity
     smtp_instance.starttls.return_value = None
     smtp_instance.login.return_value = None
     smtp_instance.sendmail.return_value = None
@@ -22,17 +22,17 @@ def fake_env(monkeypatch, mocker: MockerFixture):
     #yield fake SMTP for tests to access
     yield smtp_instance
 
-def test_format_email_body_no_results(mocker: MockerFixture):
+def test_format_email_body_no_results():
     content = email_functions.format_email_body({"query": []})
     assert "No new results found." in content
 
-def test_format_email_body_one_result(mocker: MockerFixture):
+def test_format_email_body_one_result():
     fake_results = {"title": "result1", "link": "http://example.com/1", \
                     "displayLink": "http://example.com", "snippet": "Snippet 1"}
     content = email_functions.format_email_body({"query": [fake_results]})
     assert all([item in content for item in fake_results.values()])
 
-def test_send_email_no_results(mocker: MockerFixture):
+def test_send_email_no_results(fake_env):
     #Call the function with no-results string
     email_functions.send_email("No new results found.")
 
@@ -45,7 +45,7 @@ def test_send_email_no_results(mocker: MockerFixture):
     assert "No new results found." in msg_str
     assert "Subject: Google News Search Results" in msg_str
 
-def test_send_email_with_results(mocker: MockerFixture):
+def test_send_email_with_results(fake_env):
     #set up fake_results dict
     fake_results = {"title": "result1", "link": "http://example.com/1", \
                     "displayLink": "http://example.com", "snippet": "Snippet 1"}

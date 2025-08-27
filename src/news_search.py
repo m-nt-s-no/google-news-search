@@ -3,7 +3,7 @@ from requests.exceptions import HTTPError
 import json
 import os
 from dotenv import load_dotenv
-from email_functions import format_email_body, send_email
+from src.email_functions import format_email_body, send_email
 
 load_dotenv()
 

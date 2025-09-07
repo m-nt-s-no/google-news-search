@@ -10,15 +10,7 @@ load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
 SEARCH_TERMS = [
-    "adobe -\"Adobe Mountain\"", 
-    "adobe -\"Adobe style\"",
-    "adobe -\"Adobe Style\"", 
-    "adobe -\"Adobe-style\"", 
-    "adobe -\"Adobe-Style\"", 
-    "adobe -\"Adobe home\"",
-    "adobe -\"Adobe house\"",
-    "adobe -\"adobe home\"",
-    "adobe -\"adobe house\"",
+    "adobe -\"adobe construction\"  -\"adobe architecture\" -\"adobe building\" -\"adobe brick\" -\"Adobe Mountain\" -\"Adobe style\" -\"Adobe Style\" -\"Adobe-style\" -\"Adobe-Style\" -\"Adobe home\" -\"Adobe house\" -\"adobe home\" -\"adobe house\"", 
     ]
 DATE_RESTRICTION = "d1" #restricts results to last 24 hours
 MAX_RESULTS = 100 #100 results per query is max for free tier of API
@@ -61,7 +53,7 @@ def main():
             print(f"Error with query '{query}': {e}")
 
     if all_new_results:
-        print(json.dumps(all_new_results, indent = 2))
+        #print(json.dumps(all_new_results, indent = 2))
         print(f"Found {sum(len(items) for items in all_new_results.values())} new results.")
         send_email(format_email_body(all_new_results))
     else:

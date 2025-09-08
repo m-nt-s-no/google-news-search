@@ -1,6 +1,7 @@
 import requests
 from requests.exceptions import HTTPError
 import json
+from pathlib import Path
 import os
 from dotenv import load_dotenv
 from src.email_functions import format_email_body, send_email
@@ -9,19 +10,13 @@ load_dotenv()
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
-SEARCH_TERMS = [
-    "adobe -\"Adobe Mountain\"", 
-    "adobe -\"Adobe style\"",
-    "adobe -\"Adobe Style\"", 
-    "adobe -\"Adobe-style\"", 
-    "adobe -\"Adobe-Style\"", 
-    "adobe -\"Adobe home\"",
-    "adobe -\"Adobe house\"",
-    "adobe -\"adobe home\"",
-    "adobe -\"adobe house\"",
-    ]
 DATE_RESTRICTION = "d1" #restricts results to last 24 hours
 MAX_RESULTS = 100 #100 results per query is max for free tier of API
+
+# Loads search terms from config/search_terms.json
+config_file = Path(__file__).resolve().parent.parent / "config" / "search_terms.json"
+with open(config_file, "r") as f:
+    SEARCH_TERMS = json.load(f)["Adobe"]
 
 def run_search(query):
     """Fetch paginated results from Google Custom Search API"""
@@ -61,7 +56,7 @@ def main():
             print(f"Error with query '{query}': {e}")
 
     if all_new_results:
-        print(json.dumps(all_new_results, indent = 2))
+        #print(json.dumps(all_new_results, indent = 2))
         print(f"Found {sum(len(items) for items in all_new_results.values())} new results.")
         send_email(format_email_body(all_new_results))
     else:

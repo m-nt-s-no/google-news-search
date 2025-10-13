@@ -51,21 +51,106 @@ and India-based InVideo.',
 '', '', '', 'Topics', '© 2025 TechCrunch Media LLC.']
 """
 # FYI TechCrunch headline HTML is: <h1 class="article-hero__title wp-block-post-title">Adobe’s video editing app Premiere arrives on iPhones</h1>
+# author info in <div class="article-hero__authors">, date in <div class="article-hero__date">
 
 # TO-DO: check other publishers' HTML structures for article content, headline:
 # SiliconANGLE, USA Today, The New York Times, The Wall Street Journal, Washington Post, BBC, CNN, Reuters, Bloomberg, NBC News, ABC News, 
 # The Guardian, AP, Bloomberg, Forbes
 
 """
-CNN headline: 
+CNN 
+headline: 
   <h1 data-editable="headlineText" class="headline__text inline-placeholder vossi-headline-text" id="maincontent">
     China warns US of countermeasures if Trump doesn’t walk back 100% tariff threat
   </h1>
-  content:
+content:
   <p class="paragraph-elevate inline-placeholder vossi-paragraph" data-uri="cms.cnn.com/_components/paragraph/instances/cmgn9p81u00063b6qnajnxwgz@published" data-editable="text" data-component-name="paragraph" data-article-gutter="true">
             Beijing has vowed countermeasures against Washington if US President Donald Trump makes good on his threat to <a href="https://www.cnn.com/2025/10/10/politics/rare-earths-china-trump-threats">impose new 100% tariffs</a> on Chinese imports.
     </p>
 
   CNN content wrapped inside <main class="article__main"></main>, <div class="article__content-container"></div>, 
   and <div class="article__content" data-editable="content" itemprop="articleBody" data-reorderable="content"></div>
+author: 
+  <span class="byline__name">
+date: 
+  published: 
+    <div class="timestamp__published"> then <time datetime="sometime">, 
+  updated: <div class="updated"> then <time datetime="sometime">
+"""
+
+"""
+SiliconANGLE
+headline:
+  <h3 class="sa-post-title">
+    AI embraces and extends enterprise software as funding keeps pouring in – but is all this a bubble?
+  </h3>
+content: <div class="col-md-12 col-xs-12 sa-post-content">, then <div class="single-post-content">, then each paragraph in a bare <p> tag
+  "single-post-content" uniquely identifies article content
+author: <span class="author"> (first one, subsequent tags are authors of related articles)
+date: <p class="text-uppercase post-updated-date">, then <span class="meta-dt">
+"""
+
+"""
+USA Today
+headline: 
+  <h1 class="gnt_ar_hl" elementtiming="ar-headline">
+  'Keep your mouth shut.’ Tempers flare over shutdown with no end in sight
+  </h1>
+content: <div class="gnt_ar_b">, then each paragraph in <p class="gnt_ar_b_p">
+author:
+  <a href="/staff/8391697001/zachary-schermele/" data-t-l=":byline with photo|o|c|text" class="gnt_ar_by_a gnt_ar_by_a__fi"><img class="gnt_ar_by_i" src="/gcdn/authoring/authoring-images/2024/07/08/USAT/74332447007-xxx-usat-886362-021560.JPG?crop=3999,4000,x0,y0&amp;width=48&amp;height=48&amp;format=pjpg&amp;auto=webp" srcset="/gcdn/authoring/authoring-images/2024/07/08/USAT/74332447007-xxx-usat-886362-021560.JPG?crop=3999,4000,x0,y0&amp;width=96&amp;height=96&amp;format=pjpg&amp;auto=webp 2x" decoding="async" loading="eager" alt="Portrait of Zachary Schermele" fetchpriority="high" data-t-l=":byline with photo|o|c|photo"> Zachary Schermele</a>
+date:
+  <div class="gnt_ar_dt">::after</div>
+"""
+
+"""
+NYTimes
+headline:
+  <h1 id="link-767900ef" class="css-4um83n e1h9rw200" data-testid="headline">
+    How a Las Vegas Casino Mogul Helped Bring N.B.A. Games Back to China
+  </h1>
+content (only partial bc paywall):
+  <section name="articleBody" class="meteredContent css-ar1ez3">
+    <div class="css-s99gbd StoryBodyCompanionColumn" data-testid="companionColumn-0">
+      <div class="css-53u6y8">
+        <p class="css-ac37hb evys1bk0">
+          In 2021, the casino mogul Patrick Dumont approached the N.B.A. commissioner with a brazen idea: Bring American professional basketball 
+          back to China.
+        </p>
+        <p class="css-ac37hb evys1bk0">The N.B.A.’s relationship with Beijing had been in tatters for two years, after a team
+          executive’s tweet in support of pro-democracy protests in Hong Kong. The resulting controversy cost the league hundreds of millions of 
+          dollars. Partners pulled their sponsorships. China’s state broadcaster CCTV stopped airing games.
+        </p>
+        <p class="css-ac37hb evys1bk0">
+          Western companies that clash so publicly with Beijing rarely get second chances. But Mr. Dumont, an executive with one of the world’s 
+          most profitable casino operators, believed that the National Basketball Association could get back into China through Macau, the 
+          semiautonomous city where his company ran several highly lucrative casinos.
+        </p>
+        <p class="css-zry96z" aria-live="polite" role="note">
+          <a class="css-1081t4c" href="https://www.nytimes.com/subscription?campaignId=8WXW7">
+            Subscribe to The Times</a> to read as many articles as you like.
+        </p>
+      </div>
+      <aside class="css-ew4tgv" aria-label="companion column"></aside>
+    </div>
+  </section>
+author:
+  <p class="css-4anu6l e1jsehar1">
+    <span class="byline-prefix">By </span>
+    <a href="https://www.nytimes.com/by/tania-ganguli" class="css-ojhyzr e1jsehar0" itemprop="name">
+      Tania Ganguli
+    </a> 
+    and 
+    <a href="https://www.nytimes.com/by/mara-hvistendahl" class="last-byline css-ojhyzr e1jsehar0" itemprop="name">
+      Mara Hvistendahl
+    </a>
+  </p>
+date:
+  <ul class="css-1cgskve epjyd6m4">
+    <li class="css-ccw2r3 epjyd6m3">
+      <time class="css-1uc6ajg e16638kd0" datetime="2025-10-11T05:01:11-04:00">
+        Oct. 11, 2025
+      </time>
+    </li>
+  </ul>
 """

@@ -154,3 +154,152 @@ date:
     </li>
   </ul>
 """
+
+"""
+WSJ
+headline:
+  <h1 class="css-1vi6b05-StyledHeadline-Styled-Styled-Styled emwm06f0">
+    How China and the U.S. Are Racing to De-Escalate the Trade War
+  </h1>
+
+content:
+  <p data-type="paragraph" data="[object Object]" class="css-1akm6h5-Paragraph e1e4oisd0">
+    President Trump is trying to publicly de-escalate tensions with China to soothe markets while privately 
+    keeping up pressure on Beijing—a difficult balancing act that is being closely watched by Wall Street.
+  </p>
+
+author:
+  <div data-testid="byline" class="epvx9354 css-1iwob86-BylineContainer"> 
+    <p class="epvx9352 css-1s90smj-AuthorPlaintext">By </p>
+    <a data-testid="author-link" href="https://www.wsj.com/news/author/brian-schwartz" target="_self" aria-label="Author page for Brian Schwartz" class="epvx9353 css-jv4qg1-AuthorLink">
+      <span class="css-17x5lw">
+        <span class="css-1wc2zh5">
+          Brian Schwartz
+        </span>
+      </span>
+    </a>
+  </div>
+  + 2 more authors
+
+date:
+  <p data-testid="timestamp-text" class="es486sg1 css-119j68f-TimeTag">
+    <time datetime="2025-10-14T01:00:00.000Z">
+      Oct. 13, 2025 9:00 pm
+    </time>
+    <span> 
+      ET
+    </span>
+  </p>
+"""
+
+"""
+Washington Post
+headline:
+  <h1 id="main-content" data-qa="headline" data-testid="headline" class="wpds-c-eRlesA wpds-c-eRlesA-dHdMuz-isOnSplitTopper-false wpds-c-eRlesA-bAbYzz-isStyle-false wpds-c-eRlesA-iPJLV-css">
+    Hundreds of CDC layoffs reversed, but biodefense preparedness staff hit
+  </h1>
+
+content:
+  <div class="wpds-c-PJLV article-body type-text" data-qa="article-body">
+    <p data-apitype="text" data-contentid="UDBYJ7RUMH5AT098CK9RXDB3J8" data-el="text" class="wpds-c-heFNVF wpds-c-heFNVF-iPJLV-css overrideStyles font-copy" dir="null">
+      Officials have reversed more than half of the about 1,300<a href="https://www.washingtonpost.com/health/2025/10/11/cdc-layoffs-public-health-shutdown/" class="js-itid-click"> layoff notices</a> 
+      sent to staff members at the Centers for Disease Control and Prevention, sparing personnel who were leading the response to measles outbreaks in the United States and an Ebola outbreak abroad. 
+      But details emerged about the other health officials who lost their jobs, including analysts responsible for monitoring and protecting the United States from biological, chemical and nuclear 
+      threats, according to current and former officials.
+    </p>
+  </div>
+
+author:
+  <div data-qa="author-byline" data-testid="article-byline" class="wpds-c-cNdzuP wpds-c-cNdzuP-hSmMVC-isLive-false wpds-c-cNdzuP-igKRIQW-css">
+    <div class="wpds-c-PJLV wpds-c-PJLV-kxYKtF-isLive-false wpds-c-PJLV-iPJLV-css overrideStyles">
+      <div class="wpds-c-PJLV wpds-c-PJLV-AsWAM-isMultiple-true">
+        <span class="PJLV">
+          <div data-testid="author-name-with-optional-link" class="wpds-c-byuVAJ wpds-c-byuVAJ-iPJLV-css">
+            <span data-testid="byline-attribution" class="PJLV">By <!-- --> </span>
+            <a class="wpds-c-PJLV wpds-c-PJLV-ktcktv-isLink-true overrideStyles js-itid-click" href="https://www.washingtonpost.com/people/lena-h-sun/" rel="author">
+              Lena H. Sun
+            </a>
+          </div>
+          <span class="wpds-c-kpjDGe wpds-c-kpjDGe-fSGdIc-isSmall-false wpds-c-kpjDGe-iPJLV-css"> and<!-- -->&nbsp;</span>
+          </span>
+        </div>
+        <div class="wpds-c-PJLV wpds-c-PJLV-AsWAM-isMultiple-true">
+          <span class="PJLV">
+            <div data-testid="author-name-with-optional-link" class="wpds-c-byuVAJ wpds-c-byuVAJ-iPJLV-css">
+              <a class="wpds-c-PJLV wpds-c-PJLV-ktcktv-isLink-true overrideStyles js-itid-click" href="https://www.washingtonpost.com/people/paige-winfield-cunningham/" rel="author">
+                Paige Winfield Cunningham
+              </a>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+
+date:
+  <div data-testid="timestamp" class="wpds-c-bEimne wpds-c-bEimne-dyECYW-theme-default">
+    <time datetime="2025-10-13T22:45:15.869Z" class="wpds-c-gRBhEF wpds-c-gRBhEF-idbzzBd-css overrideStyles">
+      <div class="wpds-c-eUMOSL">
+        <span data-testid="published-date" class="wpds-c-bASIGw wpds-c-bASIGw-inNKvU-css overrideStyles">
+          October 13, 2025 at 6:45 p.m. EDT
+        </span>
+        <span data-testid="relative-date" class="wpds-c-bASIGw wpds-c-bASIGw-ikIXjjZ-css overrideStyles">
+          Today at 6:45 p.m. EDT
+        </span>
+      </div>
+    </time>
+  </div>
+"""
+
+"""
+BBC
+headline:
+  <div data-component="headline-block" class="sc-3b6b161a-0 bPbmDW">
+    <h1 class="sc-f98b1ad2-0 jRDKjj">
+      Madagascar president hiding in 'safe place' as he warns of coup attempt
+    </h1>
+  </div>
+
+content:
+  <div data-component="text-block" class="sc-3b6b161a-0 jdlrvG">
+    <p class="sc-9a00e533-0 bJoRPJ">
+      Madagascar's embattled President Andry Rajoelina has said he is sheltering in a "safe place" after an attempt on his life,
+      following weeks of protests calling for him to quit.
+    </p>
+    <p class="sc-9a00e533-0 bJoRPJ">
+      In a live broadcast to the nation on Facebook, Rajoelina, 51, said "a group of military personnel and politicians planned 
+      to assassinate me".
+    </p>
+    <p class="sc-9a00e533-0 bJoRPJ">
+      He did not reveal his location, but unconfirmed reports earlier suggested that he had fled the country on a French military aircraft.
+    </p>
+    <p class="sc-9a00e533-0 bJoRPJ">
+      It follows a fortnight of nationwide protests, mainly led by young demonstrators, aimed at kicking him out of power.
+    </p>
+  </div>
+  + subsequent paragraphs in additional divs with data-component="text-block"
+
+author:
+  <span data-testid="byline-new-contributors" class="sc-c4820dd1-11 bxdaHR">
+    <div class="sc-c4820dd1-5 iYeVyy">
+      <span class="sc-c4820dd1-7 dbQBRo">
+        Natasha Booty
+      </span>
+      <span data-testid="undefined-role-location" class="sc-c4820dd1-8 evcqcz"></span><span class="sc-c4820dd1-9 iEEPlu"> 
+        and
+      </span>
+    </div>
+    <div class="sc-c4820dd1-5 iYeVyy">
+      <span class="sc-c4820dd1-7 dbQBRo">
+        Sammy Awami
+      </span>
+      <span data-testid="undefined-role-location" class="sc-c4820dd1-8 evcqcz">
+        BBC Africa, Antananarivo
+      </span>
+    </div>
+  </span>
+
+date:
+  <time datetime="2025-10-13T18:37:34.650Z" class="sc-c4820dd1-2 IVdPK">
+    8 hours ago
+  </time>
+"""
